@@ -11,18 +11,18 @@ No other roles are required.
 Role Variables
 --------------
 
-- extrahop_rpcapd_target = <unset>
+- extrahop_rpcapd_target = *unset*
   No default. Set this to the IP or hostname
   of the ExtraHop EDA you want the system to forward packets to.
 
 - extrahop_rpcapd_port = 2003 (Default)
 
-- extrahop_rpcapd_second_target = <unset>
+- extrahop_rpcapd_second_target = *unset*
   No default. Set this to the IP or hostname
   of the 2nd ExtraHop EDA you want the system to forward packets to.
   Rarely used.
 
-- extrahop_rpcapd_interface = <unset>
+- extrahop_rpcapd_interface = *unset*
   No default. Set this to the interface name i.e. eth0 of the sender.
   If, and only if, a 2nd rpcapd target is defined, this variable
   is required.
@@ -44,9 +44,6 @@ Including an example of how to use your role (for instance, with variables passe
 License
 -------
 
-None.
+BSD
 
-Author Information
-------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
