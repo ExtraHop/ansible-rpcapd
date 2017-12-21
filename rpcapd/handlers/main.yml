@@ -1,0 +1,8 @@
+---
+- name: restart rpcapd
+  service: name=rpcapd state=restarted
+  tags: rpcapd
+
+- name: service rpcapd
+  service: name=rpcapd state=running
+  tags: rpcapd

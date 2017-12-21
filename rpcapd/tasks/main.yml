@@ -1,0 +1,38 @@
+---
+# Tasks for rpcapd role
+# Vars:
+# extrahop_rpcapd_target is the IP or hostname of the extrahop device to pull the installer from and send packets to
+# extrahop_rpcapd_port is the UDP port to forward packets to. Default: 2003
+# extrahop_rpcapd_interface is the nic that rpcapd will pull data from. Default: eth0
+
+- name: download rpcapd software
+  get_url: url=https://{{ extrahop_rpcapd_target }}/tools/install-rpcapd.sh
+           dest=/tmp/install-rpcapd.sh
+           validate_certs=False
+  tags: rpcapd
+
+- name: install rpcapd sofware
+  shell: sh -x /tmp/install-rpcapd.sh {{ extrahop_rpcapd_target }} {{ extrahop_rpcapd_port }} > /tmp/install-rpcapd.log 2>&1
+  args:
+    chdir: /tmp
+    creates: /etc/init.d/rpcapd
+  notify: service rpcapd
+  tags: rpcapd
+
+- name: change rpcapd interface if set
+  lineinfile:
+    path: /opt/extrahop/etc/rpcapd.ini
+    regexp: '^ActiveClient\s*=\s{{ extrahop_rpcapd_target }}'
+    line: 'ActiveClient = {{ extrahop_rpcapd_target }},{{ extrahop_rpcapd_port }},ifname={{ extrahop_rpcapd_interface }}'
+    state: present
+  when: extrahop_rpcapd_interface != "eth0"
+  tags: rpcapd
+
+- name: setup secondary rpcapd target
+  lineinfile:
+    path: /opt/extrahop/etc/rpcapd.ini
+    insertafter: '^ActiveClient'
+    line: 'ActiveClient = {{ extrahop_rpcapd_second_target }},{{ extrahop_rpcapd_port }},ifname={{ extrahop_rpcapd_interface }}'
+    state: present
+  when: extrahop_rpcapd_second_target is defined
+  tags: rpcapd
