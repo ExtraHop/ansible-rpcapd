@@ -61,6 +61,11 @@ galaxy_info:
     - rpcap
     - rpcapd
     - installer
+    - networking
+    - network
+    - ubuntu
+    - linux
+    - aws
     
 dependencies: []
   # List your role dependencies here, one per line. Be sure to remove the '[]' above,
