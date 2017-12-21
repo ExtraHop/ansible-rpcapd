@@ -35,10 +35,10 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-        - 16.04
+        - bionic
         - xenial
-        - 14.04
         - trusty
+        - precise
   # platforms:
   # - name: Fedora
   #   versions:
