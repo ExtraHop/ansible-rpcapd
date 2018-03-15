@@ -4,5 +4,5 @@
   tags: rpcapd
 
 - name: service rpcapd
-  service: name=rpcapd state=running
+  service: name=rpcapd state=started
   tags: rpcapd

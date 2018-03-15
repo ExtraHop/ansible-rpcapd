@@ -17,6 +17,7 @@
     chdir: /tmp
     creates: /etc/init.d/rpcapd
   notify: service rpcapd
+  become: true
   tags: rpcapd
 
 - name: change rpcapd interface if set
