@@ -1,7 +1,7 @@
 galaxy_info:
-  author: Mark Foster
-  description: rpcapd role for Ansible galaxy
-  company: ExtraHop
+  author: Mark Foster <mdf@extrahop.com>
+  description:  rpcapd role for Ubuntu systems (Ansible Galaxy)
+  company: ExtraHop Networks https://www.extrahop.com/
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
@@ -35,6 +35,8 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
+        - cosmic
+        - bionic
         - xenial
         - trusty
   # platforms:
